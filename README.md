@@ -75,3 +75,35 @@ end
 ```
 
 The first two dimensions must conform using the standard matrix multiply rules taking the transa and transb pre-operations into account, and dimensions 3:end must match exactly or be singleton (equal to 1). If a dimension is singleton then it is virtually expanded to the required size (i.e., equivalent to a repmat operation to get it to a conforming size but without the actual data copy). This is equivalent to a bsxfun capability for matrix multiplication.
+
+### Installation
+
+You can embed the package to your project by adding the snippet at the beginning of your code:
+
+```
+try
+    mtimesx('SPEEDOMP',['OMP_SET_NUM_THREADS(',num2str(maxNumCompThreads('automatic')),')']);
+catch
+    if exist('mtimesx','dir') ~=7
+        unzip('https://github.com/nonkreon/mtimesx/archive/master.zip','mtimesx');
+        addpath(genpath([pwd filesep 'mtimesx']));
+    end
+    try
+        mtimesx('SPEEDOMP',['OMP_SET_NUM_THREADS(',num2str(maxNumCompThreads('automatic')),')']);
+    catch
+        mex -setup;
+        mtimesx('SPEEDOMP',['OMP_SET_NUM_THREADS(',num2str(maxNumCompThreads('automatic')),')']);
+    end
+end
+```
+
+### Extras
+
+Included [Xiaodong's "Inversion every 2D slice for arbitrary Multi-dimension array"](https://www.mathworks.com/matlabcentral/fileexchange/31222-inversion-every-2d-slice-for-arbitrary-multi-dimension-array) as it is kind of complementing the project, if you needed this you probably need that at some point too.
+
+### Thanks
+
+The biggest thanks go to our hero: [James Tursa](https://www.mathworks.com/matlabcentral/profile/authors/756104-james-tursa)
+[Quanlong He](https://www.mathworks.com/matlabcentral/profile/authors/9792244-quanlong-he) (a.k.a [cybertk](@cybertk)) for the Octave implementation and bug fixes
+[Ethan Beyak](https://www.mathworks.com/matlabcentral/profile/authors/5642149-ethan-beyak) for pointing out the fix for MATLAB versions beyond R2014a
+[Xiaodong](https://www.mathworks.com/matlabcentral/profile/authors/2643899-xiaodong) for the [Inverter](https://www.mathworks.com/matlabcentral/fileexchange/31222-inversion-every-2d-slice-for-arbitrary-multi-dimension-array)
