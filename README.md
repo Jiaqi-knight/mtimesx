@@ -104,6 +104,9 @@ Included [Xiaodong's "Inversion every 2D slice for arbitrary Multi-dimension arr
 ### Thanks
 
 The biggest thanks go to our hero: [James Tursa](https://www.mathworks.com/matlabcentral/profile/authors/756104-james-tursa)
+
 [Quanlong He](https://www.mathworks.com/matlabcentral/profile/authors/9792244-quanlong-he) (a.k.a [cybertk](@cybertk)) for the Octave implementation and bug fixes
+
 [Ethan Beyak](https://www.mathworks.com/matlabcentral/profile/authors/5642149-ethan-beyak) for pointing out the fix for MATLAB versions beyond R2014a
+
 [Xiaodong](https://www.mathworks.com/matlabcentral/profile/authors/2643899-xiaodong) for the [Inverter](https://www.mathworks.com/matlabcentral/fileexchange/31222-inversion-every-2d-slice-for-arbitrary-multi-dimension-array)
